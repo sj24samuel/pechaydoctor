@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\PechayDiseaseDetectController;
 use App\Http\Controllers\Treatmentdosagecontroller;
+use App\Http\Controllers\PechayDiseaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +75,8 @@ Route::get('/profile', function () {
 Route::get('/trainingai', function () {
     return view('/administrator/AI_Train/index');
 });
-Route::get('/diseases', function () {
-    return view('/administrator/diseasesfolder/index');
-});
+//Pechay Disease
+Route::get('/diseases', [PechayDiseaseController::class, 'showdisease']);
 //Ferticides and Pesticides Management
 Route::get('/FPM', [Treatmentdosagecontroller::class, 'showtreatmentdosage']);
 Route::get('/FPM/{id}',[Treatmentdosagecontroller::class, 'showtreatmentview'])->name('showtreatmentview');
