@@ -8,7 +8,9 @@
                 @include('layouts.adminsidebar')
                 <div class=" col main-panel content-wrapper ">
                     <div class="row">
-                       <h1>Welcome Back</h1> 
+                    @if(session('authenticated') && session('admin'))
+                        <h1>Welcome, {{ session('admin')->fname }}</h1>
+                    @endif
                     </div>
                 </div>
             </div> 

@@ -10,7 +10,7 @@ class PechayDiseaseController extends Controller
 {
     //show disease
     public function showdisease(){
-        $data = pechaydieasemodel::all();
-        return view('administrator.diseasefolder.index' , compact('data'));
+        $data = pechaydiseasemodel::all();
+        return view('administrator.diseasesfolder.index' , compact('data'));
     }
 }

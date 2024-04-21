@@ -36,10 +36,9 @@ Route::get('/recommendation', function () {
 Route::get('/upload', function () {
     return view('upload');
 });
-Route::get('/dashboard', function () {
-    return view('/administrator/dashboard');
-    //return view('/administrator/dash2');
-});
+Route::get('/dashboard', 'AuthController@dashboard')->name('dashboard');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
 
 //authentication
 Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');

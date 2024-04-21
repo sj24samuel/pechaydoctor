@@ -25,9 +25,9 @@
                                 @foreach($data as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->scienctific_name }}</td>
-                                        <td>{{ $item->applicaiton_measure }}</td>
+                                        <td>{{ $item->disease_name }}</td>
+                                        <td>{{ $item->scientific_name }}</td>
+                                        <td>{{ $item->control_measure }}</td>
                                         <td>
                                             <a class="btn btn-primary" href="{{ route('showtreatmentview', ['id' => $item->id]) }}">View Details</a>
                                         </td>
