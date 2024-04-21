@@ -8,7 +8,13 @@
                 @include('layouts.adminsidebar')
                 <div class=" col main-panel content-wrapper ">
                     <div class="row">
-                       <h1>Admin Profile</h1> 
+                        <h1 class="text-center">Admin Profile</h1>
+                        <div class="container">
+                            <h3>Admin ID: {{ session('admin')->id }}</h3>
+                           <h3>Admin Name: {{ session('admin')->fname }} {{ session('admin')->lname }}</h3>
+                           <h3>Admin Email: {{ session('admin')->email }}</h3>
+                           <h3>Password: {{ session('admin')->password }}</h3>
+                        </div>
                     </div>
                 </div>
             </div> 

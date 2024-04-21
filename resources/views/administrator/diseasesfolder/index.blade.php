@@ -29,7 +29,7 @@
                                         <td>{{ $item->scientific_name }}</td>
                                         <td>{{ $item->control_measure }}</td>
                                         <td>
-                                            <a class="btn btn-primary" href="{{ route('showtreatmentview', ['id' => $item->id]) }}">View Details</a>
+                                            <a class="btn btn-primary" href="{{ route('showdiseaseview', ['id' => $item->id]) }}">View Details</a>
                                         </td>
                                     </tr>
                                 @endforeach

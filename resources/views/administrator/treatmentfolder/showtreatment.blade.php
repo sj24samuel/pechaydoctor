@@ -10,7 +10,6 @@
                     <div class="container">
                         <div class="d-flex">
                             <a class="btn btn-rounded btn-secondary text-light" href="/FPM">Back</a>
-                            <a class="btn btn-rounded btn-secondary text-light" href=" {{ route('showupdateview', ['id' => $data->id]) }} ">Update</a>
                         </div>
                         <h1 class="text-center"> {{$data->name}} </h1> &nbsp
                         <h4 >Description</h4>
@@ -20,6 +19,7 @@
                         <h5>Type of Substance: <small>{{$data->substance_type}}</small> </h5>
                         <h5>Application Measure: <small>{{$data->applicaiton_measure}}</small> </h5>
                     </div>
+                    <a class="btn btn-rounded btn-primary text-light" href=" {{ route('showupdateview', ['id' => $data->id]) }} ">Update</a>
                 </div>
             </div> 
        </div>

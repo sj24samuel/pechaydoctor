@@ -109,7 +109,16 @@ class AuthController extends Controller
 
     public function profile()
     {
-        return view('profile');
+        $admin = session('admin');
+    
+    // Check if admin is logged in
+    if ($admin) {
+        // Admin details are available, you can return them
+        return view('administrator.Profile.adminprofile', compact('admin'));
+    } else {
+        // Admin is not logged in, you may want to handle this case differently, e.g., redirect to login
+        return redirect()->route('login')->withErrors(['message' => 'Please log in to view your profile.']);
+    }
     }
 
     /*public function showTestAPI(){
