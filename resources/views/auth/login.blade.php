@@ -64,7 +64,8 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                             <div class=" text-center">
-                            <p>Don't have an account? <a href="/auth/register">Register here</a>.</p>
+                            <p>Don't have an account? <a href="/auth/register">Register here!</a>.</p>
+
                             </div>
                         </form>
                     </div>
