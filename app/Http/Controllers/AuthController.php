@@ -25,18 +25,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+    
+        $admin = AdminAccounts::where('email', $credentials['email'])->first();
         
-        $user = AdminAccounts::where('email', $credentials['email'])->first();
-        $pass = $request->password;
-        $rpass = password_hash($pass, PASSWORD_BCRYPT);
-        
-        if (password_verify($credentials['password'] , $rpass)&&$user)
-        {
-        $request->session()->put('authenticated', true);
-           return redirect()->intended('/dashboard');
-        }
-        else {
-            // code...
+        if ($admin && Hash::check($credentials['password'], $admin->password)) {
+            $request->session()->put('authenticated', true);
+            $request->session()->put('admin', $admin);
+            return redirect()->route('dashboard');
+        } else {
             return back()->withErrors(['email' => 'Invalid credentials']);
         }
         //dd(session()->all());
@@ -106,7 +102,26 @@ class AuthController extends Controller
         // Redirect or other response...
     }
 
-    public function showTestAPI(){
+    public function dashboard()
+    {
+        return view('administrator.dashboard');
+    }
+
+    public function profile()
+    {
+        $admin = session('admin');
+    
+    // Check if admin is logged in
+    if ($admin) {
+        // Admin details are available, you can return them
+        return view('administrator.Profile.adminprofile', compact('admin'));
+    } else {
+        // Admin is not logged in, you may want to handle this case differently, e.g., redirect to login
+        return redirect()->route('login')->withErrors(['message' => 'Please log in to view your profile.']);
+    }
+    }
+
+    /*public function showTestAPI(){
         return view('administrator.testconnectionapi');
     }
 
@@ -128,5 +143,5 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-    }
+    }*/
 }

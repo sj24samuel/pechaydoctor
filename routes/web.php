@@ -36,10 +36,9 @@ Route::get('/recommendation', function () {
 Route::get('/upload', function () {
     return view('upload');
 });
-Route::get('/dashboard', function () {
-    return view('/administrator/dashboard');
-    //return view('/administrator/dash2');
-});
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
 
 //authentication
 Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -69,15 +68,17 @@ Route::get('/testconnectapi', [AdminContorller::class, 'connectToAPI']);
 
 
 //Admin Dashboard Nav-Links
-Route::get('/profile', function () {
+/*oute::get('/profile', function () {
     return view('/administrator/profile/adminprofile');
-});
+});*/
 Route::get('/trainingai', function () {
     return view('/administrator/AI_Train/index');
 });
 //Pechay Disease
 Route::get('/diseases', [PechayDiseaseController::class, 'showdisease']);
-//Ferticides and Pesticides Management
+Route::get('/disease/{id}',[PechayDiseaseController::class, 'showdiseaseview'])->name('showdiseaseview');
+Route::get('/disease/update/{id}',[PechayDiseaseController::class, 'updatediseaseinfo'])->name('updatediseaseinfo');
+//Fertilizer and Pesticides Management
 Route::get('/FPM', [Treatmentdosagecontroller::class, 'showtreatmentdosage']);
 Route::get('/FPM/{id}',[Treatmentdosagecontroller::class, 'showtreatmentview'])->name('showtreatmentview');
 Route::get('/FPM/update/{id}',[Treatmentdosagecontroller::class, 'showupdateview'])->name('showupdateview');

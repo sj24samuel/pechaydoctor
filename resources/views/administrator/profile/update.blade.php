@@ -8,9 +8,13 @@
                 @include('layouts.adminsidebar')
                 <div class=" col main-panel content-wrapper ">
                     <div class="row">
-                    @if(session('authenticated') && session('admin'))
-                        <h1>Welcome, {{ session('admin')->fname }}</h1>
-                    @endif
+                    <h1>Admin Profile</h1>
+                        @if($admin)
+                            <p>Name: {{ $admin->fname }} {{ $admin->lname }}</p>
+                            <p>Email: {{ $admin->email }}</p>
+                        @else
+                            <p>No admin data available</p>
+                        @endif
                     </div>
                 </div>
             </div> 

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Treament Dosage')
+@section('title', 'Disease Management')
 @section('content')
     <main class="py-4">
         @include('layouts.adminnav')
@@ -11,29 +11,28 @@
                         <h1 class="text-center">Update the Content</h1>
                         <form method="POST" action="#">
                             <div class="form-group">
-                                <label>Name of Substance</label>
-                                <input type="text" class="form-contol" name="name_of_substance" value="{{$data->name}}">
+                                <label>Disease Name</label>
+                                <input type="text" class="form-control" name="disease_name" value="{{$data->disease_name}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Scientific Name</label>
+                                <input type="text" class="form-control" name="sciencetific_name" value="{{$data->scientific_name}}">
                             </div>
                             <div class="form-group">
                                 <label>Desrciption</label>
-                                <textarea class="form-contol" >{{$data->description}}</textarea>
+                                <textarea name="description" class="form-control" id="description">{{$data->description}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Recommended Dosage</label>
-                                <input class="form-contol"  type="number" name="dosage_num" value="{{$data->dosage_}}">
-                                <input class="form-contol"  type="text" name="dosage_unit" value="{{$data->dosage_unit}}">
+                                <label>Symptoms</label>
+                                <textarea  name="symptoms" class="form-control" id="sypmtoms">{{$data->symptoms}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Type of Substance</label>
-                                <input class="form-contol"  type="text" name="substance_type" value="{{$data->substance_type}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Application Measure</label>
-                                <input class="form-contol"  type="text" name="application_measure" value="{{$data->applicaiton_measure}}">
+                                <label>Control Measure</label>
+                                <textarea  name="control_measure" class="form-control" id="control_measure">{{$data->control_measure}}</textarea>
                             </div>
                             <div class="form-group">
                                 <input class="btn btn-rounded btn-primary text-light" type="submit" name="Update" id="update" value="Update">
-                                <a class="btn btn-rounded btn-secondary text-light" href="/FPM">Back</a>
+                                <a class="btn btn-rounded btn-secondary text-light" href="/diseases">Back</a>
                             </div>
                         </form>
                     </div>
